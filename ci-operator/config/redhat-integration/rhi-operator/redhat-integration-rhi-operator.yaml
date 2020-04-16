@@ -4,12 +4,12 @@ base_images:
     name: ubi
     namespace: ocp
     tag: "8"
-binary_build_commands: make code/compile COMPILE_TARGET="./build/_output/bin/redhat-integreation/rhi-operator"
+binary_build_commands: make code/compile COMPILE_TARGET="./build/_output/bin/redhat-integration/rhi-operator"
 build_root:
   image_stream_tag:
     cluster: https://api.ci.openshift.org
     name: rhi-operator-base-image
-    namespace: redhat-integreation
+    namespace: redhat-integration
     tag: latest
 images:
 - dockerfile_path: build/Dockerfile
@@ -18,13 +18,13 @@ images:
     bin:
       paths:
       - destination_dir: .
-        source_path: /go/src/github.com/redhat-integreation/rhi-operator/build
-  to: redhat-integreation/rhi-operator
+        source_path: /go/src/github.com/redhat-integration/rhi-operator/build
+  to: redhat-integration/rhi-operator
 - dockerfile_path: Dockerfile.functional
   from: os
-  to: redhat-integreation/rhi-operator-test-harness
+  to: redhat-integration/rhi-operator-test-harness
 promotion:
-  name: redhat-integreation/rhi-operator
+  name: redhat-integration/rhi-operator
   namespace: 
 resources:
   '*':
